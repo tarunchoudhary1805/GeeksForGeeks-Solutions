@@ -14,9 +14,11 @@ class CheckBit
     // Function to check if Kth bit is set or not.
     static boolean checkKthBit(int n, int k)
     {
-        // Your code here
-        if(((n>>k) & 1) == 1) return true;
-        else return false;
+      int mask  = 1 << (k);
+      int ans = n & mask;
+    //   System.out.println(ans);
+      if(ans == 0) return false;
+      else return true;
     }
     
 }
