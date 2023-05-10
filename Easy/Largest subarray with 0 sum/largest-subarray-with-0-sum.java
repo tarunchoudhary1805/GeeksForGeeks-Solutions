@@ -33,19 +33,20 @@ class GfG
     {
         // Your code here
         HashMap<Integer,Integer> map = new HashMap<>();
+        int [] prefixSum = new int[n];
+        prefixSum[0] = arr[0];
+        for(int i=1;i<n;i++){
+            prefixSum[i] = prefixSum[i-1] + arr[i];
+        }
         map.put(0,-1);
-        int max = 0;
-        int prefixSum = 0;
-        for(int i=0;i<n;i++){
-            prefixSum += arr[i];
-            if(map.containsKey(prefixSum)){
-                if((i - map.get(prefixSum)) > max){
-                    max = i-map.get(prefixSum);
-                }
+        int  maxLength = 0;
+        for(int i=0;i<prefixSum.length;i++){
+            if(map.containsKey(prefixSum[i])){
+                maxLength = Math.max(maxLength,i-map.get(prefixSum[i]));
             }else{
-                map.put(prefixSum,i);
+                map.put(prefixSum[i],i);
             }
         }
-        return max;
+        return maxLength;
     }
 }
