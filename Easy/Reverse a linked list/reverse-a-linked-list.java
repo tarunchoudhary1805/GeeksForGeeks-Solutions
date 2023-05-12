@@ -56,7 +56,7 @@ class GFG{
 /* linked list node class:
 
 class Node {
-    int value;
+    int data;
     Node next;
     Node(int value) {
         this.value = value;
@@ -73,8 +73,9 @@ class Solution
         // code here
         Node cur = head;
         Node prev = null;
-        while(cur != null){
-            Node next = cur.next;
+        Node next = head;
+        while(next != null){
+            next = cur.next;
             cur.next = prev;
             prev = cur;
             cur = next;
