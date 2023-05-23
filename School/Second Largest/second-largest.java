@@ -34,14 +34,15 @@ public class Main {
 
 class Solution {
     int print2largest(int arr[], int n) {
-        // code here
-        Arrays.sort(arr);
+        
         int secondLargest = -1;
-        int largest = arr[n-1];
-        for(int i=n-2;i>=0;i--){
-            if(arr[i] != largest){
+        int largest = arr[0];
+        for(int i=0;i<n;i++){
+            if(arr[i] > largest){
+                secondLargest = largest;
+                largest = arr[i];
+            }else if(arr[i] < largest && arr[i] > secondLargest){
                 secondLargest = arr[i];
-                break;
             }
         }
         return secondLargest;
